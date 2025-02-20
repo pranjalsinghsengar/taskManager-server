@@ -20,7 +20,7 @@ export const LoginController: RequestHandler = async (req, res) => {
       return;
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET as string, { expiresIn: "1h" });
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET as string, { expiresIn: "2d" });
     res.json({  success:true,token, user });
   } catch (error) {
     console.error("Error in Login/Register:", error);
