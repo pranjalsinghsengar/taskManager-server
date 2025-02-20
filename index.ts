@@ -10,7 +10,7 @@ import cors from "cors"
 const app = express();
 dotenv.config();
 
-
+MongooseConnect()
 const PORT = 3000;
 
 app.use(express.json());
@@ -27,12 +27,5 @@ app.use("/task", taskRouter)
 
 
 app.listen(PORT, async () => {
-  console.loh("aoidshfhdsafhsaodjfsadf")
-  try {
-    MongooseConnect().then(() => {
       console.log(`Server is running on PORT http://localhost:${PORT}`);
-    });
-  } catch (err) {
-    console.error("Server error:", err);
-  }
 });
