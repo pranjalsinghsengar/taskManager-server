@@ -8,7 +8,7 @@ import cors from "cors"
 // import Task from "./Task/models";
 
 const app = express();
-const PORT = 5000;
+const PORT = 5000 || process.env.PORT;
 
 app.use(express.json());
 app.use(cors({ origin: '*', credentials: true }));
