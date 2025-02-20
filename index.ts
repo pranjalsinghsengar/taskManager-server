@@ -6,8 +6,11 @@ import dotenv from "dotenv";
 import taskRouter from "./src/Task/router";
 import cors from "cors"
 // import Task from "./Task/models";
-dotenv.config();
+
 const app = express();
+dotenv.config();
+
+
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
