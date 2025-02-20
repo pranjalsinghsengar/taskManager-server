@@ -11,7 +11,7 @@ const app = express();
 dotenv.config();
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 app.use(express.json());
 app.use(cors({ origin: '*', credentials: true }));
@@ -27,6 +27,7 @@ app.use("/task", taskRouter)
 
 
 app.listen(PORT, async () => {
+  console.loh("aoidshfhdsafhsaodjfsadf")
   try {
     MongooseConnect().then(() => {
       console.log(`Server is running on PORT http://localhost:${PORT}`);
