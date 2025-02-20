@@ -64,78 +64,135 @@ The Task Manager API is a RESTful web service built with Node.js, Express, and M
 
 ## API Endpoints
 
-### User Endpoints
+## Base URL
+```
+https://taskmanager-server-pm9v.onrender.com
+```
 
-- **POST /user/register**
-  - Register a new user.
-  - **Request Body:**
-    ```json
-    {
-      "username": "string",
-      "email": "string",
-      "password": "string"
-    }
-    ```
+## Authentication
+Most endpoints require JWT authentication. Include the token in the Authorization header:
+```
+Authorization: Bearer <your_jwt_token>
+```
 
-- **POST /user/login**
-  - Log in an existing user.
-  - **Request Body:**
-    ```json
-    {
-      "email": "string",
-      "password": "string"
-    }
-    ```
+## User Endpoints
 
-- **POST /user/verifyToken**
-  - Verify the JWT token.
-  - **Headers:**
-    - `Authorization: Bearer <token>`
+### Register User
+Create a new user account.
 
-### Task Endpoints
+- **URL**: `/user/register`
+- **Method**: `POST`
+- **Headers**: 
+  - Content-Type: application/json
+- **Body**:
+```json
+{
+    "username": "string",
+    "email": "string",
+    "password": "string"
+}
+```
+- **Example**:
+```json
+{
+    "username": "new account",
+    "email": "test12@gmail.com",
+    "password": "123456"
+}
+```
 
-- **POST /task/create**
-  - Create a new task.
-  - **Request Body:**
-    ```json
-    {
-      "title": "string",
-      "description": "string",
-      "status": "string"
-    }
-    ```
-  - **Headers:**
-    - `Authorization: Bearer <token>`
+### Verify Token
+Verify if the JWT token is valid.
 
-- **GET /task/list**
-  - List all tasks for the authenticated user.
-  - **Headers:**
-    - `Authorization: Bearer <token>`
+- **URL**: `/user/verifyToken`
+- **Method**: `POST`
+- **Headers**: 
+  - Content-Type: application/json
+  - Authorization: Bearer <token>
+- **Body**: Empty
 
-- **POST /task/update**
-  - Update an existing task.
-  - **Request Body:**
-    ```json
-    {
-      "taskId": "string",
-      "title": "string",
-      "description": "string",
-      "status": "string"
-    }
-    ```
-  - **Headers:**
-    - `Authorization: Bearer <token>`
+## Task Endpoints
 
-- **POST /task/delete**
-  - Delete a task.
-  - **Request Body:**
-    ```json
-    {
-      "taskId": "string"
-    }
-    ```
-  - **Headers:**
-    - `Authorization: Bearer <token>`
+### Create Task
+Create a new task.
 
+- **URL**: `/task/create`
+- **Method**: `POST`
+- **Headers**: 
+  - Content-Type: application/json
+  - Authorization: Bearer <token>
+- **Body**:
+```json
+{
+    "title": "string",
+    "description": "string",
+    "status": "string"
+}
+```
 
+### Update Task
+Update an existing task.
+
+- **URL**: `/task/update`
+- **Method**: `POST`
+- **Headers**: 
+  - Content-Type: application/json
+  - Authorization: Bearer <token>
+- **Body**:
+```json
+{
+    "taskId": "string",
+    "title": "string",
+    "description": "string",
+    "status": "string"
+}
+```
+
+### List Tasks
+Get all tasks for the authenticated user.
+
+- **URL**: `/task/list`
+- **Method**: `GET`
+- **Headers**: 
+  - Content-Type: application/json
+  - Authorization: Bearer <token>
+- **Body**: Empty
+
+### Update Task Status
+Update the status of an existing task.
+
+- **URL**: `/task/update/status`
+- **Method**: `GET`
+- **Headers**: 
+  - Content-Type: application/json
+  - Authorization: Bearer <token>
+- **Body**:
+```json
+{
+    "taskId": "string",
+    "status": "string"
+}
+```
+
+### Delete Task
+Delete an existing task.
+
+- **URL**: `/task/delete`
+- **Method**: `GET`
+- **Headers**: 
+  - Content-Type: application/json
+  - Authorization: Bearer <token>
+- **Body**:
+```json
+{
+    "taskId": "string"
+}
+```
+
+## Status Codes
+- `200`: Success
+- `400`: Bad Request
+- `401`: Unauthorized
+- `404`: Not Found
+- `500`: Internal Server Error
 
