@@ -14,6 +14,6 @@ taskRouter.post("/create", JWT_Validation, CreateTaskController);
 taskRouter.get("/list", JWT_Validation, TaskListController);
 taskRouter.post("/update/status", JWT_Validation, MaskUpdateTaskController);
 taskRouter.post("/update", JWT_Validation, UpdateTaskController);
-taskRouter.post("/update", JWT_Validation, DeleteTaskController);
+taskRouter.post("/delete", JWT_Validation, DeleteTaskController);
 
 export default taskRouter;
