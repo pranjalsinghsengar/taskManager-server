@@ -6,13 +6,13 @@ import dotenv from "dotenv";
 import taskRouter from "./src/Task/router";
 import cors from "cors"
 // import Task from "./Task/models";
-
+dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(cors({ origin: '*', credentials: true }));
-dotenv.config();
+
 
 app.get("/", (req: Request, res: Response) => {
   res.json({message:"working"});
